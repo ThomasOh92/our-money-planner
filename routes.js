@@ -12,13 +12,20 @@ module.exports = (app, allModels) => {
    *  =========================================
    */
 
-  // require the controller
+  //Users Controller and Routes
+  const usersController = require('./controllers/users')(allModels);
+  app.get('/registration', usersController.registrationForm);
+  app.post('/registration', usersController.registerUser);
+  app.get('/login', usersController.loginForm);
+  app.post('/login', usersController.loginUser);
 
   //Index Page
   const indexController = require('./controllers/index')(allModels)
   app.get('/', indexController.mainPage)
-  //Users Controller and Routes
-  // const usersController = require('./controllers/users')(allModels);
-  // app.get('/registration', usersController.registrationForm);
+
+  //Net Worth Controller and Routes
+  const netWorthController = require('./controllers/networth')(allModels)
+  app.get('/networth', netWorthController.getNetWorth)
+  app.post('/networth', netWorthController.updateNetWorth)
 
 };

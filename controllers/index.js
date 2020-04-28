@@ -7,7 +7,11 @@ module.exports = (db) => {
    */
 
   let mainPage = (req, res) => {
-    res.render('index')
+    if (req.cookies.loggedin){
+        res.render('index')
+    } else {
+        res.redirect('/login')
+    }
   }
 
   /**

@@ -35,7 +35,7 @@ if( process.env.DATABASE_URL ){
   configs = {
     user: 'thomasoh',
     host: '127.0.0.1',
-    database: 'tweedr',
+    database: 'couplefinc',
     port: 5432
   };
 }
@@ -46,7 +46,6 @@ const pool = new pg.Pool(configs);
 pool.on('error', function (err) {
   console.log('idle client error', err.message, err.stack);
 });
-
 
 
 /*
@@ -61,10 +60,11 @@ pool.on('error', function (err) {
  * ===================================================
  */
 
+const allUsersModelsFunction = require('./models/users');
+const usersModelsObject = allUsersModelsFunction( pool );
 
-// const allUsersModelsFunction = require('./models/users');
-// const usersModelsObject = allUsersModelsFunction( pool );
-
+const netWorthModelsFunction = require('./models/networth');
+const netWorthModelsObject = netWorthModelsFunction( pool );
 
 /*
  * ===================================================
@@ -87,6 +87,8 @@ module.exports = {
 
   // get a reference to end the connection pool at server end
   pool:pool,
+  users: usersModelsObject,
+  networth: netWorthModelsObject
 
   /*
    * ADD APP MODELS HERE
