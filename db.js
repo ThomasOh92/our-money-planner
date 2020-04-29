@@ -69,6 +69,9 @@ const usersModelsObject = usersModelsFunction( pool );
 const netWorthModelsFunction = require('./models/networth');
 const netWorthModelsObject = netWorthModelsFunction( pool );
 
+const bankAccountsModelsFunction = require('./models/bankaccount')
+const bankAccountsModelsObject = bankAccountsModelsFunction ( pool )
+
 /*
  * ===================================================
  * ===================================================
@@ -90,14 +93,11 @@ module.exports = {
 
   // get a reference to end the connection pool at server end
   pool:pool,
+  //app models
   accounts: accountsModelsObject,
   users: usersModelsObject,
-  networth: netWorthModelsObject
+  networth: netWorthModelsObject,
+  bankaccount: bankAccountsModelsObject
 
-  /*
-   * ADD APP MODELS HERE
-   */
-
-  // users: userModelsObject,
 
 };

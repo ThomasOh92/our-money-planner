@@ -34,5 +34,10 @@ module.exports = (app, allModels) => {
   app.get('/networth', netWorthController.getNetWorth)
   app.post('/networth', netWorthController.updateNetWorth)
 
+  //Bank Account Controller and Routes
+  const bankAccController = require('./controllers/bankaccount')(allModels)
+  app.get('/bankaccount', bankAccController.getBankAccs)
+  app.post('/bankaccount', bankAccController.addBankAcc)
+  app.delete('/bankaccount', bankAccController.deleteBankAcc)
 
 };

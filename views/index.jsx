@@ -8,11 +8,13 @@ class Home extends React.Component {
 
     return (
       <html>
-        <head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link></head>
-
+        <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link>
+            <link rel="stylesheet" type="text/css" href="/style.css"></link>
+        </head>
         <body>
             {/*The topline navigation bar*/}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom" style={{height: "100px"}}>
               <a className="navbar-brand" href="#">Finance Collab</a>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -21,8 +23,8 @@ class Home extends React.Component {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         {/*Display for current user*/}
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Current User: {currentPartner}</a>
+                        <li className="nav-item">
+                            <a className="nav-link disabled" href="#">Current User: {currentPartner}</a>
                         </li>
                         {/*Change user*/}
                         <li className="nav-item dropdown">
@@ -36,7 +38,7 @@ class Home extends React.Component {
                       </li>
                     </ul>
                     {/*Logout button*/}
-                    <button class="btn btn-outline-primary my-2 my-sm-0" id="log-out">Log Out</button>
+                    <button className="btn btn-outline-primary my-2 my-sm-0" id="log-out">Log Out</button>
               </div>
             </nav>
             {/* The entire main section*/}
@@ -44,10 +46,10 @@ class Home extends React.Component {
               <div className="row">
               {/* The side navigation bar, to change boards */}
               <div className="col-sm-2">
-                <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div className="nav flex-column nav-pills mt-4 greypills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                   <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Financial Overview</a>
                   <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Sticky Notes</a>
-                  <a className="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Retrieve Info</a>
+                  <a className="nav-link" id="v-pills-s-tab" data-toggle="pill" href="#v-pills-s" role="tab" aria-controls="v-pills-s" aria-selected="false">Retrieve Info</a>
                   <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Suggested Financial Products</a>
                 </div>
               </div>
@@ -59,47 +61,109 @@ class Home extends React.Component {
                     <div id="networth-section" className="d-inline-flex">
                         <form className="form-inline">
                               {/* Current Net Worth */}
-                              <div className="form-group mb-2">
+                              <div className="form-group mb-2 mt-4">
                                 <label htmlFor="currentNetWorth" className="font-weight-bold">Est. Net Worth: </label>
                                 <input type="text" readOnly className="form-control-plaintext w-50 mx-auto text-center" id="networth" />
                               </div>
                               {/* Form to update net worth */}
-                              <div className="form-group mb-2">
+                              <div className="form-group mb-2 mt-4">
                                 <label htmlFor="updateNetWorth" className="sr-only"></label>
                                 <input type="text" className="form-control" id="updateNetWorth" placeholder="$" />
                               </div>
                         </form>
-                        <button id="updatenetworthbutton"className="btn btn-primary mb-2">Update</button>
+                        <button id="updatenetworthbutton"className="btn btn-primary mb-2 mt-4">Update</button>
                     </div>
+                    <hr />
                     {/* Current Income Section */}
                     <div id="income-section">
-                      <div class="form-group">
+                      <div className="form-group">
                         <label className="font-weight-bold">Current Income</label>
-                            <div class="form-group row">
-                                <label for="Partner A" class="col-sm-2 col-form-label">{partnerAName}</label>
-                                <div class="col-sm-7 align-self-center input-group">
-                                  <input style={{backgroundColor: "#e9ecef"}} class="form-control" type="text" id="partner-a-income" readOnly />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="partner-a-button">Update</button>
+                            <div className="form-group row">
+                                <label htmlFor="Partner A" className="col-sm-2 col-form-label">{partnerAName}</label>
+                                <div className="col-sm-7 align-self-center input-group">
+                                  <input style={{backgroundColor: "#e9ecef"}} className="form-control" type="text" id="partner-a-income" readOnly />
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-secondary" type="button" id="partner-a-button">Update</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="Partner B" class="col-sm-2 col-form-label">{partnerBName}</label>
-                                <div class="col-sm-7 align-self-center input-group">
-                                  <input style={{backgroundColor: "#e9ecef"}} class="form-control" type="text" id="partner-b-income" readOnly />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="partner-b-button">Update</button>
+                            <div className="form-group row">
+                                <label htmlFor="Partner B" className="col-sm-2 col-form-label">{partnerBName}</label>
+                                <div className="col-sm-7 align-self-center input-group">
+                                  <input style={{backgroundColor: "#e9ecef"}} className="form-control" type="text" id="partner-b-income" readOnly />
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-secondary" type="button" id="partner-b-button">Update</button>
                                     </div>
                                 </div>
                             </div>
                       </div>
                     </div>
+                    <hr />
+                    {/* Bank Account and Debts/Bills Section */}
+                    <div className = "container-fluid pl-0">
+                        <div className="row">
+                            <div className="col-sm-6">
+                            <label className="font-weight-bold">Bank Accounts</label>
+                            {/* Table */}
+                            <table className="table">
+                              <thead className="thead-light">
+                                <tr>
+                                  <th scope="col">Bank</th>
+                                  <th scope="col">Account No. / Description</th>
+                                  <th scope="col">Balance</th>
+                                </tr>
+                              </thead>
+                              <tbody id="bank-acc-table">
+                              </tbody>
+                            </table>
+                            {/* Modal to add stuff */}
+                            <button type="button" className="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+                              Add Bank Account
+                            </button>
+                            <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                              <div className="modal-dialog modal-dialog-centered" role="document">
+                                <div className="modal-content">
+                                  <div className="modal-header">
+                                    <h5 className="modal-title" id="exampleModalLongTitle">New Bank Account</h5>
+                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <form method="POST" action="/bankaccount">
+                                        <div className="modal-body">
+                                          <div className="form-group">
+                                            <label htmlFor="bank" className="col-form-label">Bank:</label>
+                                            <input type="text" className="form-control" id="bank" name="bank" value="DBS"/>
+                                          </div>
+                                          <div className="form-group">
+                                            <label htmlFor="accountdescription" className="col-form-label">Account No. / Description:</label>
+                                            <textarea className="form-control" id="accountdescription" name="accountdescription" value="Savings Acc - XXX-XXXXX-X"></textarea>
+                                          </div>
+                                          <div className="form-group">
+                                            <label htmlFor="balance" className="col-form-label">Balance: (numbers only)</label>
+                                            <input type="text" className="form-control" id="balance" name="balance" value="100000.00"/>
+                                          </div>
+
+                                      </div>
+                                      <div className="modal-footer">
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" id="add-bank-account" className="btn btn-primary">Add Account</button>
+                                      </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <button type="button" className="btn btn-outline-danger ml-2" id="reveal-delete-buttons">Delete Account</button>
+                            </div>
+                            <div className="col-sm-6">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {/* Sticky Notes */}
                 <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
                 {/* Retrieve Info */}
-                <div className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                <div className="tab-pane fade" id="v-pills-s" role="tabpanel" aria-labelledby="v-pills-s-tab">...</div>
                 {/* Suggested Financial Products */}
                 <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                 </div>
@@ -117,6 +181,7 @@ class Home extends React.Component {
         let partnerBName = `{partnerBName}`;
     </script>
     <script src="/account.js"></script>
+    <script src="/bankaccount.js"></script>
       </html>
     );
   }
