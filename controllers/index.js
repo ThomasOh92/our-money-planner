@@ -8,7 +8,9 @@ module.exports = (db) => {
 
   let mainPage = (req, res) => {
     if (req.cookies.loggedin){
-        res.render('index')
+        const data = {partnerA: req.cookies.partnerA,
+                      partnerB: req.cookies.partnerB}
+        res.render('index', data)
     } else {
         res.redirect('/login')
     }

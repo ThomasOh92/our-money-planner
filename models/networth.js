@@ -6,10 +6,10 @@
 module.exports = (dbPoolInstance) => {
 
 
-  let getNetWorthFromDatabase = async (userid) => {
+  let getNetWorthFromDatabase = async (accountid) => {
     try {
-        let values = [userid]
-        let queryString = "SELECT networth FROM users WHERE id = $1";
+        let values = [accountid]
+        let queryString = "SELECT networth FROM accounts WHERE id = $1";
         const queryResult = await dbPoolInstance.query(queryString, values)
         return {amount: queryResult.rows[0]}
     } catch (err){
@@ -17,10 +17,10 @@ module.exports = (dbPoolInstance) => {
     }
   }
 
-  let updateNetWorthInDatabase = async (userid, newNetWorth) => {
+  let updateNetWorthInDatabase = async (accountid, newNetWorth) => {
     try {
-        let values = [userid, newNetWorth];
-        let queryString = "UPDATE users SET networth = $2 WHERE id = $1 RETURNING *"
+        let values = [accountid, newNetWorth];
+        let queryString = "UPDATE accounts SET networth = $2 WHERE id = $1 RETURNING *"
         const queryResult = await dbPoolInstance.query(queryString, values)
         return queryResult.rows[0].networth
     } catch (err){

@@ -10,8 +10,8 @@ class LogIn extends React.Component {
             <div className="container"><h1>Log In</h1></div>
             <form method="POST" action="/login" className = "container">
               <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <input type="text" className="form-control" id="username" name="username"></input>
+                <label htmlFor="accountname">Account Name</label>
+                <input type="text" className="form-control" id="accountname" name="accountname"></input>
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>

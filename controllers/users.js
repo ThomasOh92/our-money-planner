@@ -1,46 +1,30 @@
 module.exports = (db) => {
 
-  let registrationForm = (req, res) => {
-    res.render('users/register')
+  let createUsersForm = (req, res) => {
+    res.render('users/createusers')
   }
 
-  let registerUser = async (req, res) => {
+  let createUsers = async (req, res) => {
     try {
-        const modelRequest = await db.users.registerUser(req.body.username, req.body.password)
-        res.cookie('loggedin', modelRequest.currentSessionCookie)
-        res.cookie('username', modelRequest.queryResult.username)
-        res.cookie('user_id', modelRequest.queryResult.id)
+        const modelRequest = await db.users.createUsers(req.cookies.account_id, req.body.partnera, req.body.partnerb)
+        res.cookie('currentpartner', modelRequest.partnerA)
+        res.cookie('partnerA', modelRequest.partnerA)
+        res.cookie('partnerB', modelRequest.partnerB)
         res.redirect('/')
     } catch (err) {
         console.log(err)
     }
   }
 
-  let loginForm = (req, res) => {
-    res.render('users/login')
-  }
-
-  let loginUser = async (req, res) => {
-    try{
-        const modelRequest = await db.users.verifyLogin(req.body.username, req.body.password);
-        if (modelRequest.loginSuccess) {
-            res.cookie('loggedin', modelRequest.currentSessionCookie)
-            res.cookie('username', modelRequest.queryResult.username)
-            res.cookie('user_id', modelRequest.queryResult.id)
-            res.redirect('/')
-        } else {
-            res.send("log in failed, try again?")
-        }
-    } catch (err){
-        console.log(err)
-    }
-  }
-
   return {
-    registrationForm,
-    registerUser,
-    loginForm,
-    loginUser
+    createUsersForm,
+    createUsers
   };
 
 }
+
+// {"partnerA":
+// {"id":1,"account_id":6,"username":"Simeone","income":"~ / month"},
+// "partnerB":
+// {"id":2,"account_id":6,"username":"Klopp","income":"~ / month"}
+//     }

@@ -60,8 +60,11 @@ pool.on('error', function (err) {
  * ===================================================
  */
 
-const allUsersModelsFunction = require('./models/users');
-const usersModelsObject = allUsersModelsFunction( pool );
+const allAccountsModelsFunction = require('./models/accounts');
+const accountsModelsObject = allAccountsModelsFunction( pool );
+
+const usersModelsFunction = require('./models/users');
+const usersModelsObject = usersModelsFunction( pool );
 
 const netWorthModelsFunction = require('./models/networth');
 const netWorthModelsObject = netWorthModelsFunction( pool );
@@ -87,6 +90,7 @@ module.exports = {
 
   // get a reference to end the connection pool at server end
   pool:pool,
+  accounts: accountsModelsObject,
   users: usersModelsObject,
   networth: netWorthModelsObject
 
