@@ -4,6 +4,7 @@ class Home extends React.Component {
   render() {
     const partnerAName = this.props.partnerA;
     const partnerBName = this.props.partnerB;
+    const currentPartner = this.props.currentPartner;
 
     return (
       <html>
@@ -16,23 +17,26 @@ class Home extends React.Component {
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
-
+              {/*Nav Bar items*/}
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Current User: {partnerAName}</a>
-                    </li>
-                    <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Change User
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a className="dropdown-item" href="#">{partnerAName}</a>
-                      <a className="dropdown-item" href="#">{partnerBName}</a>
-                    </div>
-                  </li>
-                </ul>
-                <a className="nav-link" href="#">Log Out</a>
+                    <ul className="navbar-nav mr-auto">
+                        {/*Display for current user*/}
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Current User: {currentPartner}</a>
+                        </li>
+                        {/*Change user*/}
+                        <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Change User
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a className="dropdown-item" id="partner-a-select">{partnerAName}</a>
+                          <a className="dropdown-item" id="partner-b-select">{partnerBName}</a>
+                        </div>
+                      </li>
+                    </ul>
+                    {/*Logout button*/}
+                    <button class="btn btn-outline-primary my-2 my-sm-0" id="log-out">Log Out</button>
               </div>
             </nav>
             {/* The entire main section*/}
@@ -108,6 +112,11 @@ class Home extends React.Component {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossOrigin="anonymous"></script>
     <script src="/networth.js"></script>
     <script src="/income.js"></script>
+    <script>
+        let partnerAName = `{partnerAName}`;
+        let partnerBName = `{partnerBName}`;
+    </script>
+    <script src="/account.js"></script>
       </html>
     );
   }
