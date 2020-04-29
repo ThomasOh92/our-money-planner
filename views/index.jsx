@@ -76,18 +76,18 @@ class Home extends React.Component {
                       <div class="form-group">
                         <label className="font-weight-bold">Current Income</label>
                             <div class="form-group row">
-                                <label for="Partner A" class="col-sm-2 col-form-label">John Smith</label>
+                                <label for="Partner A" class="col-sm-2 col-form-label">{partnerAName}</label>
                                 <div class="col-sm-7 align-self-center input-group">
-                                  <input style={{backgroundColor: "#e9ecef"}} class="form-control" type="text" id="partner-a-income" placeholder="$99,000.00 / month" readOnly />
+                                  <input style={{backgroundColor: "#e9ecef"}} class="form-control" type="text" id="partner-a-income" readOnly />
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button" id="partner-a-button">Update</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="Partner B" class="col-sm-2 col-form-label">Jane Smith</label>
+                                <label for="Partner B" class="col-sm-2 col-form-label">{partnerBName}</label>
                                 <div class="col-sm-7 align-self-center input-group">
-                                  <input style={{backgroundColor: "#e9ecef"}} class="form-control" type="text" id="partner-b-income" placeholder="$100,000.00 / month" readOnly />
+                                  <input style={{backgroundColor: "#e9ecef"}} class="form-control" type="text" id="partner-b-income" readOnly />
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary" type="button" id="partner-b-button">Update</button>
                                     </div>

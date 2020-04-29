@@ -16,9 +16,29 @@ module.exports = (db) => {
     }
   }
 
+  let getIncome = async (req, res) => {
+    try {
+        const modelRequest = await db.users.getIncome(req.cookies.account_id, req.cookies.partnerA, req.cookies.partnerB)
+        res.send(modelRequest)
+    } catch (err) {
+        console.log(err)
+    }
+  }
+
+  let updateIncome = async (req, res) => {
+    try{
+        const modelRequest = await db.users.updateIncome(req.cookies.account_id, req.params.partnername, req.body.newIncome)
+        res.send(modelRequest)
+    } catch (err) {
+        console.log(err)
+    }
+  }
+
   return {
     createUsersForm,
-    createUsers
+    createUsers,
+    getIncome,
+    updateIncome
   };
 
 }

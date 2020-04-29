@@ -26,6 +26,8 @@ module.exports = (app, allModels) => {
   const usersController = require('./controllers/users')(allModels);
   app.get('/registration/users', usersController.createUsersForm);
   app.post('/registration/users', usersController.createUsers);
+  app.get('/income', usersController.getIncome)
+  app.post('/income/:partnername', usersController.updateIncome)
 
   //Net Worth Controller and Routes
   const netWorthController = require('./controllers/networth')(allModels)
