@@ -15,7 +15,7 @@ module.exports = (dbPoolInstance) => {
   let addBankAcc = async (accountdescript, balance, accountid, bank) => {
     balance = parseFloat(balance);
     let values = [accountdescript, balance, accountid, bank];
-    let queryString = "INSERT INTO bankaccounts (accountdescription, amount, account_id, bank) VALUES ($1, $2, $3, $4)";
+    let queryString = "INSERT INTO bankaccounts (accountdescription, amount, account_id, bank) VALUES ($1, $2, $3, $4) RETURNING *";
     let answer;
     try {
         answer = await dbPoolInstance.query(queryString, values);

@@ -50,7 +50,7 @@ bankAccRequest.open("GET", "/bankaccount");
 bankAccRequest.send();
 
 
-let bankAccDeleteReveal = document.getElementById('reveal-delete-buttons')
+let bankAccDeleteReveal = document.getElementById('reveal-delete-buttons-bankacc')
 let hidden = true;
 let revealButtons = function(){
     if (hidden){

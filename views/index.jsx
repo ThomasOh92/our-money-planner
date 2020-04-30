@@ -1,10 +1,45 @@
 var React = require("react");
+var TableSection = require('./components/tablesection');
 
 class Home extends React.Component {
   render() {
     const partnerAName = this.props.partnerA;
     const partnerBName = this.props.partnerB;
     const currentPartner = this.props.currentPartner;
+    const bankAccountInfoObject = {
+        title: "Bank Accounts",
+        columns: <tr>
+                  <th scope="col">Bank</th>
+                  <th scope="col">Account No. / Description</th>
+                  <th scope="col">Balance</th>
+                </tr>,
+        tableBodyId: "bank-acc-table",
+        modalButton: "Add Bank Account",
+        modalAddItem: "New Bank Account",
+        postRoute: "/bankaccount",
+        modalBody: <div className="modal-body">
+                      <div className="form-group">
+                        <label htmlFor="bank" className="col-form-label">Bank:</label>
+                        <input type="text" className="form-control" id="bank" name="bank" value="DBS"/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="accountdescription" className="col-form-label">Account No. / Description:</label>
+                        <textarea className="form-control" id="accountdescription" name="accountdescription" value="Savings Acc - XXX-XXXXX-X"></textarea>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="balance" className="col-form-label">Balance: (numbers only)</label>
+                        <input type="text" className="form-control" id="balance" name="balance" value="100000.00"/>
+                      </div>
+                  </div>,
+        modalFooter:  <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="add-bank-account" className="btn btn-primary">Add Account</button>
+                      </div>,
+        deleteButton: {
+            id: "reveal-delete-buttons-bankacc",
+            text: "Delete Account"
+        }
+    }
 
     return (
       <html>
@@ -102,60 +137,20 @@ class Home extends React.Component {
                     {/* Bank Account and Debts/Bills Section */}
                     <div className = "container-fluid pl-0">
                         <div className="row">
+                            {/*Bank Accounts Section*/}
                             <div className="col-sm-6">
-                            <label className="font-weight-bold">Bank Accounts</label>
-                            {/* Table */}
-                            <table className="table">
-                              <thead className="thead-light">
-                                <tr>
-                                  <th scope="col">Bank</th>
-                                  <th scope="col">Account No. / Description</th>
-                                  <th scope="col">Balance</th>
-                                </tr>
-                              </thead>
-                              <tbody id="bank-acc-table">
-                              </tbody>
-                            </table>
-                            {/* Modal to add stuff */}
-                            <button type="button" className="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">
-                              Add Bank Account
-                            </button>
-                            <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                              <div className="modal-dialog modal-dialog-centered" role="document">
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLongTitle">New Bank Account</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <form method="POST" action="/bankaccount">
-                                        <div className="modal-body">
-                                          <div className="form-group">
-                                            <label htmlFor="bank" className="col-form-label">Bank:</label>
-                                            <input type="text" className="form-control" id="bank" name="bank" value="DBS"/>
-                                          </div>
-                                          <div className="form-group">
-                                            <label htmlFor="accountdescription" className="col-form-label">Account No. / Description:</label>
-                                            <textarea className="form-control" id="accountdescription" name="accountdescription" value="Savings Acc - XXX-XXXXX-X"></textarea>
-                                          </div>
-                                          <div className="form-group">
-                                            <label htmlFor="balance" className="col-form-label">Balance: (numbers only)</label>
-                                            <input type="text" className="form-control" id="balance" name="balance" value="100000.00"/>
-                                          </div>
-
-                                      </div>
-                                      <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" id="add-bank-account" className="btn btn-primary">Add Account</button>
-                                      </div>
-                                  </form>
-                                </div>
-                              </div>
+                                <TableSection info={bankAccountInfoObject}/>
                             </div>
-                            <button type="button" className="btn btn-outline-danger ml-2" id="reveal-delete-buttons">Delete Account</button>
-                            </div>
+                            {/*Investments Section*/}
                             <div className="col-sm-6">
+                            </div>
+                        </div>
+                        <div className="row mt-5">
+                            {/*Outgoings Section*/}
+                            <div className = "col-sm-6">
+                            </div>
+                            {/*Others Section*/}
+                            <div className = "col-sm-6">
                             </div>
                         </div>
                     </div>
