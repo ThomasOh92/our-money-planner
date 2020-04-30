@@ -15,6 +15,7 @@ class Home extends React.Component {
                 </tr>,
         tableBodyId: "bank-acc-table",
         modalButton: "Add Bank Account",
+        modalId: "bank-acc-modal",
         modalAddItem: "New Bank Account",
         postRoute: "/bankaccount",
         modalBody: <div className="modal-body">
@@ -39,7 +40,77 @@ class Home extends React.Component {
             id: "reveal-delete-buttons-bankacc",
             text: "Delete Account"
         }
-    }
+    };
+    const investmentInfoObject = {
+        title: "Investments",
+        columns: <tr>
+                  <th scope="col">Investment</th>
+                  <th scope="col">Description / Comments</th>
+                  <th scope="col">Est. Value</th>
+                </tr>,
+        tableBodyId: "investment-table",
+        modalButton: "Add Investment",
+        modalId: "investment-modal",
+        modalAddItem: "New Investment",
+        postRoute: "/investment",
+        modalBody: <div className="modal-body">
+                      <div className="form-group">
+                        <label htmlFor="name" className="col-form-label">Investment:</label>
+                        <input type="text" className="form-control" id="name" name="name" defaultValue="Tesla Shares"/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="description" className="col-form-label"> Description / Comments:</label>
+                        <textarea className="form-control" id="description" name="description" defaultValue="50k shares, dividend not bad"></textarea>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="value" className="col-form-label">Est. Value:</label>
+                        <input type="text" className="form-control" id="value" name="value" defaultValue="100000.00"/>
+                      </div>
+                  </div>,
+        modalFooter:  <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="add-investment" className="btn btn-primary">Add Investment</button>
+                      </div>,
+        deleteButton: {
+            id: "reveal-delete-buttons-investment",
+            text: "Delete Investment"
+        }
+    };
+    const outgoingInfoObject = {
+        title: "Debts, Bills, etc.",
+        columns: <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description / Comments</th>
+                  <th scope="col">Payments</th>
+                </tr>,
+        tableBodyId: "outgoing-table",
+        modalButton: "Add Item",
+        modalId: "outgoing-modal",
+        modalAddItem: "New Item",
+        postRoute: "/outgoing",
+        modalBody: <div className="modal-body">
+                      <div className="form-group">
+                        <label htmlFor="name" className="col-form-label">Name:</label>
+                        <input type="text" className="form-control" id="name" name="name" defaultValue="Mortgage for House"/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="description" className="col-form-label"> Description / Comments:</label>
+                        <textarea className="form-control" id="description" name="description" defaultValue="Dam shag, 2m left"></textarea>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="payment" className="col-form-label">Payments:</label>
+                        <input type="text" className="form-control" id="payment" name="payment" defaultValue="10k / month"/>
+                      </div>
+                  </div>,
+        modalFooter:  <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="add-outgoing" className="btn btn-primary">Add Item</button>
+                      </div>,
+        deleteButton: {
+            id: "reveal-delete-buttons-outgoing",
+            text: "Delete Item"
+        }
+    };
 
     return (
       <html>
@@ -143,11 +214,13 @@ class Home extends React.Component {
                             </div>
                             {/*Investments Section*/}
                             <div className="col-sm-6">
+                                <TableSection info={investmentInfoObject}/>
                             </div>
                         </div>
                         <div className="row mt-5">
                             {/*Outgoings Section*/}
                             <div className = "col-sm-6">
+                                <TableSection info={outgoingInfoObject}/>
                             </div>
                             {/*Others Section*/}
                             <div className = "col-sm-6">
@@ -177,6 +250,8 @@ class Home extends React.Component {
     </script>
     <script src="/account.js"></script>
     <script src="/bankaccount.js"></script>
+    <script src="/investments.js"></script>
+    <script src="/outgoings.js"></script>
       </html>
     );
   }

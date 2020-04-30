@@ -40,4 +40,15 @@ module.exports = (app, allModels) => {
   app.post('/bankaccount', bankAccController.addBankAcc)
   app.delete('/bankaccount', bankAccController.deleteBankAcc)
 
+  //Investment Controller and Routes
+  const investmentController = require('./controllers/investments')(allModels)
+  app.get('/investment', investmentController.getInvestments)
+  app.post('/investment', investmentController.addInvestment)
+  app.delete('/investment', investmentController.deleteInvestment)
+
+  //Outgoings Controller and Routes
+  const outgoingController = require('./controllers/outgoings')(allModels)
+  app.get('/outgoing', outgoingController.getOutgoings)
+  app.post('/outgoing', outgoingController.addOutgoing)
+  app.delete('/outgoing', outgoingController.deleteOutgoing)
 };

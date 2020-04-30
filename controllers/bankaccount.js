@@ -9,6 +9,7 @@ module.exports = (db) => {
     }
   }
 
+  //Remember this is a form that posts directly
   let addBankAcc = async (req, res) => {
     try {
         if (parseFloat(req.body.balance)){

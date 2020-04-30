@@ -2,6 +2,8 @@ var React = require('react');
 
 class TableSection extends React.Component {
   render() {
+    let dataTarget = "#" + this.props.info.modalId
+
     return (
         <div>
             <label className="font-weight-bold">{this.props.info.title}</label>
@@ -14,10 +16,10 @@ class TableSection extends React.Component {
               </tbody>
             </table>
             {/* Modal to add stuff */}
-            <button type="button" className="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" className="btn btn-outline-secondary" data-toggle="modal" data-target={dataTarget}>
               {this.props.info.modalButton}
             </button>
-            <div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal fade" id={this.props.info.modalId} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                   <div className="modal-header">

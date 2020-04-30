@@ -69,9 +69,14 @@ const usersModelsObject = usersModelsFunction( pool );
 const netWorthModelsFunction = require('./models/networth');
 const netWorthModelsObject = netWorthModelsFunction( pool );
 
-const bankAccountsModelsFunction = require('./models/bankaccount')
-const bankAccountsModelsObject = bankAccountsModelsFunction ( pool )
+const bankAccountsModelsFunction = require('./models/bankaccount');
+const bankAccountsModelsObject = bankAccountsModelsFunction ( pool );
 
+const investmentsModelsFunction = require('./models/investments');
+const investmentsModelsObject = investmentsModelsFunction ( pool );
+
+const outgoingsModelsFunction = require('./models/outgoings');
+const outgoingsModelsObject = outgoingsModelsFunction ( pool );
 /*
  * ===================================================
  * ===================================================
@@ -97,7 +102,7 @@ module.exports = {
   accounts: accountsModelsObject,
   users: usersModelsObject,
   networth: netWorthModelsObject,
-  bankaccount: bankAccountsModelsObject
-
-
+  bankaccount: bankAccountsModelsObject,
+  investments: investmentsModelsObject,
+  outgoings: outgoingsModelsObject
 };
