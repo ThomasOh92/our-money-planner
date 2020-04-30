@@ -77,6 +77,9 @@ const investmentsModelsObject = investmentsModelsFunction ( pool );
 
 const outgoingsModelsFunction = require('./models/outgoings');
 const outgoingsModelsObject = outgoingsModelsFunction ( pool );
+
+const othersModelsFunction = require('./models/others');
+const othersModelsObject = othersModelsFunction ( pool );
 /*
  * ===================================================
  * ===================================================
@@ -104,5 +107,6 @@ module.exports = {
   networth: netWorthModelsObject,
   bankaccount: bankAccountsModelsObject,
   investments: investmentsModelsObject,
-  outgoings: outgoingsModelsObject
+  outgoings: outgoingsModelsObject,
+  others: othersModelsObject
 };

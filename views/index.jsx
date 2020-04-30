@@ -14,7 +14,7 @@ class Home extends React.Component {
                   <th scope="col">Balance</th>
                 </tr>,
         tableBodyId: "bank-acc-table",
-        modalButton: "Add Bank Account",
+        modalButton: "Add",
         modalId: "bank-acc-modal",
         modalAddItem: "New Bank Account",
         postRoute: "/bankaccount",
@@ -38,7 +38,7 @@ class Home extends React.Component {
                       </div>,
         deleteButton: {
             id: "reveal-delete-buttons-bankacc",
-            text: "Delete Account"
+            text: "Delete"
         }
     };
     const investmentInfoObject = {
@@ -49,7 +49,7 @@ class Home extends React.Component {
                   <th scope="col">Est. Value</th>
                 </tr>,
         tableBodyId: "investment-table",
-        modalButton: "Add Investment",
+        modalButton: "Add",
         modalId: "investment-modal",
         modalAddItem: "New Investment",
         postRoute: "/investment",
@@ -73,7 +73,7 @@ class Home extends React.Component {
                       </div>,
         deleteButton: {
             id: "reveal-delete-buttons-investment",
-            text: "Delete Investment"
+            text: "Delete"
         }
     };
     const outgoingInfoObject = {
@@ -84,9 +84,9 @@ class Home extends React.Component {
                   <th scope="col">Payments</th>
                 </tr>,
         tableBodyId: "outgoing-table",
-        modalButton: "Add Item",
+        modalButton: "Add",
         modalId: "outgoing-modal",
-        modalAddItem: "New Item",
+        modalAddItem: "New Debt, Bill, etc.",
         postRoute: "/outgoing",
         modalBody: <div className="modal-body">
                       <div className="form-group">
@@ -108,10 +108,39 @@ class Home extends React.Component {
                       </div>,
         deleteButton: {
             id: "reveal-delete-buttons-outgoing",
-            text: "Delete Item"
+            text: "Delete"
         }
     };
-
+    const otherInfoObject = {
+        title: "Others",
+        columns: <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Comments</th>
+                </tr>,
+        tableBodyId: "other-table",
+        modalButton: "Add",
+        modalId: "other-modal",
+        modalAddItem: "New Item",
+        postRoute: "/other",
+        modalBody: <div className="modal-body">
+                      <div className="form-group">
+                        <label htmlFor="title" className="col-form-label">Title:</label>
+                        <input type="text" className="form-control" id="title" name="title" defaultValue="Insurance Plan"/>
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="comments" className="col-form-label"> Comments:</label>
+                        <textarea className="form-control" id="comments" name="comments" defaultValue="Quite Good Coverage, 2m upon death"></textarea>
+                      </div>
+                  </div>,
+        modalFooter:  <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="add-other" className="btn btn-primary">Add Item</button>
+                      </div>,
+        deleteButton: {
+            id: "reveal-delete-buttons-other",
+            text: "Delete"
+        }
+    };
     return (
       <html>
         <head>
@@ -120,7 +149,7 @@ class Home extends React.Component {
         </head>
         <body>
             {/*The topline navigation bar*/}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom" style={{height: "100px"}}>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top" style={{height: "100px"}}>
               <a className="navbar-brand" href="#">Finance Collab</a>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -152,19 +181,19 @@ class Home extends React.Component {
               <div className="row">
               {/* The side navigation bar, to change boards */}
               <div className="col-sm-2">
-                <div className="nav flex-column nav-pills mt-4 greypills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                  <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Financial Overview</a>
-                  <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Sticky Notes</a>
-                  <a className="nav-link" id="v-pills-s-tab" data-toggle="pill" href="#v-pills-s" role="tab" aria-controls="v-pills-s" aria-selected="false">Retrieve Info</a>
-                  <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Suggested Financial Products</a>
+                 <div className="nav flex-sm-column nav-pills mt-4 greypills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Financial Overview</a>
+                      <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Sticky Notes</a>
+                      <a className="nav-link" id="v-pills-s-tab" data-toggle="pill" href="#v-pills-s" role="tab" aria-controls="v-pills-s" aria-selected="false">Retrieve Info</a>
+                      <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Suggested Financial Products</a>
                 </div>
               </div>
-              <div className="col-sm-10">
+              <div className="col-sm-10" id="board-section" >
                 {/* Financial Overview */}
                 <div className="tab-content" id="v-pills-tabContent">
                   <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     {/* Est. Net Worth Section */}
-                    <div id="networth-section" className="d-inline-flex">
+                    <div id="networth-section" className="d-inline-flex align-items-center">
                         <form className="form-inline">
                               {/* Current Net Worth */}
                               <div className="form-group mb-2 mt-4">
@@ -177,7 +206,7 @@ class Home extends React.Component {
                                 <input type="text" className="form-control" id="updateNetWorth" placeholder="$" />
                               </div>
                         </form>
-                        <button id="updatenetworthbutton"className="btn btn-primary mb-2 mt-4">Update</button>
+                        <button id="updatenetworthbutton" className="btn btn-primary mb-2 mt-4">Update</button>
                     </div>
                     <hr />
                     {/* Current Income Section */}
@@ -224,6 +253,7 @@ class Home extends React.Component {
                             </div>
                             {/*Others Section*/}
                             <div className = "col-sm-6">
+                                <TableSection info={otherInfoObject}/>
                             </div>
                         </div>
                     </div>
@@ -252,6 +282,7 @@ class Home extends React.Component {
     <script src="/bankaccount.js"></script>
     <script src="/investments.js"></script>
     <script src="/outgoings.js"></script>
+    <script src="/others.js"></script>
       </html>
     );
   }

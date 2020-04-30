@@ -35,3 +35,10 @@ CREATE TABLE IF NOT EXISTS outgoings  (
 	description TEXT,
 	account_id INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS others  (
+	id SERIAL PRIMARY KEY,
+	title TEXT,
+	comments TEXT,
+	account_id INTEGER
+);

@@ -51,4 +51,10 @@ module.exports = (app, allModels) => {
   app.get('/outgoing', outgoingController.getOutgoings)
   app.post('/outgoing', outgoingController.addOutgoing)
   app.delete('/outgoing', outgoingController.deleteOutgoing)
+
+  //Others Controller and Routes
+  const othersController = require('./controllers/others')(allModels)
+  app.get('/other', othersController.getOthers)
+  app.post('/other', othersController.addOther)
+  app.delete('/other', othersController.deleteOther)
 };
