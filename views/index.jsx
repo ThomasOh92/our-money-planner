@@ -56,11 +56,11 @@ class Home extends React.Component {
         modalBody: <div className="modal-body">
                       <div className="form-group">
                         <label htmlFor="name" className="col-form-label">Investment:</label>
-                        <input type="text" className="form-control" id="name" name="name" defaultValue="Tesla Shares"/>
+                        <input type="text" className="form-control" id="investmentname" name="name" defaultValue="Tesla Shares"/>
                       </div>
                       <div className="form-group">
                         <label htmlFor="description" className="col-form-label"> Description / Comments:</label>
-                        <textarea className="form-control" id="description" name="description" defaultValue="50k shares, dividend not bad"></textarea>
+                        <textarea className="form-control" id="investmentdescription" name="description" defaultValue="50k shares, dividend not bad"></textarea>
                       </div>
                       <div className="form-group">
                         <label htmlFor="value" className="col-form-label">Est. Value:</label>
@@ -91,11 +91,11 @@ class Home extends React.Component {
         modalBody: <div className="modal-body">
                       <div className="form-group">
                         <label htmlFor="name" className="col-form-label">Name:</label>
-                        <input type="text" className="form-control" id="name" name="name" defaultValue="Mortgage for House"/>
+                        <input type="text" className="form-control" id="outgoingname" name="name" defaultValue="Mortgage for House"/>
                       </div>
                       <div className="form-group">
                         <label htmlFor="description" className="col-form-label"> Description / Comments:</label>
-                        <textarea className="form-control" id="description" name="description" defaultValue="Dam shag, 2m left"></textarea>
+                        <textarea className="form-control" id="outgoingdescription" name="description" defaultValue="Dam shag, 2m left"></textarea>
                       </div>
                       <div className="form-group">
                         <label htmlFor="payment" className="col-form-label">Payments:</label>
@@ -145,6 +145,7 @@ class Home extends React.Component {
       <html>
         <head>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous"></link>
+            <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'></link>
             <link rel="stylesheet" type="text/css" href="/style.css"></link>
         </head>
         <body>
@@ -188,7 +189,7 @@ class Home extends React.Component {
                       <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Suggested Financial Products</a>
                 </div>
               </div>
-              <div className="col-sm-10" id="board-section" >
+              <div className="col-sm-10" id="board-section">
                 {/* Financial Overview */}
                 <div className="tab-content" id="v-pills-tabContent">
                   <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
@@ -259,7 +260,23 @@ class Home extends React.Component {
                     </div>
                 </div>
                 {/* Sticky Notes */}
-                <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+                <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                  <div id="board">
+                    <div>
+                        <div className="note draggable" id="note-1">
+                          <div className="note-header" id="note-1-header">
+                          </div>
+                          <div className="text">
+                              <textarea className="cnt" placeholder="Enter note description here"></textarea>
+                              <br />
+                              <label class="current-partner-label">{currentPartner}</label>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                    <button type="button" className="btn btn-outline-secondary" id="add-new-note">Add New Note</button>
+                    <button type="button" className="btn btn-outline-secondary" id="test-button">Test</button>
+                </div>
                 {/* Retrieve Info */}
                 <div className="tab-pane fade" id="v-pills-s" role="tabpanel" aria-labelledby="v-pills-s-tab">...</div>
                 {/* Suggested Financial Products */}
@@ -283,6 +300,7 @@ class Home extends React.Component {
     <script src="/investments.js"></script>
     <script src="/outgoings.js"></script>
     <script src="/others.js"></script>
+    <script src="/notes.js"></script>
       </html>
     );
   }

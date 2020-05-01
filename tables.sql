@@ -42,3 +42,12 @@ CREATE TABLE IF NOT EXISTS others  (
 	comments TEXT,
 	account_id INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS stickynotes  (
+	id SERIAL PRIMARY KEY,
+	username TEXT,
+	content TEXT,
+	xCoord INTEGER,
+	yCoord INTEGER,
+	account_id INTEGER
+);

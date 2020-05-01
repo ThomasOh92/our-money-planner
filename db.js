@@ -80,6 +80,9 @@ const outgoingsModelsObject = outgoingsModelsFunction ( pool );
 
 const othersModelsFunction = require('./models/others');
 const othersModelsObject = othersModelsFunction ( pool );
+
+const stickyNotesModelsFunction = require('./models/stickynotes');
+const stickyNotesModelsObject = stickyNotesModelsFunction ( pool );
 /*
  * ===================================================
  * ===================================================
@@ -108,5 +111,6 @@ module.exports = {
   bankaccount: bankAccountsModelsObject,
   investments: investmentsModelsObject,
   outgoings: outgoingsModelsObject,
-  others: othersModelsObject
+  others: othersModelsObject,
+  stickynotes: stickyNotesModelsObject
 };
