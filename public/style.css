@@ -74,3 +74,9 @@
 	right: 40px;
 	bottom: 40px;
 }
+
+#save-button {
+	position: fixed;
+	right: 180px;
+	bottom: 40px;
+}

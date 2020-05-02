@@ -57,4 +57,9 @@ module.exports = (app, allModels) => {
   app.get('/other', othersController.getOthers)
   app.post('/other', othersController.addOther)
   app.delete('/other', othersController.deleteOther)
+
+  //Sticky Notes Controller and Routes
+  const stickyNoteController = require('./controllers/stickynotes')(allModels)
+  app.get('/stickynote', stickyNoteController.getStickyNotes)
+  app.post('/stickynote', stickyNoteController.saveStickyNotes)
 };

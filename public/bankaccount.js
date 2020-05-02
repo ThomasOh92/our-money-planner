@@ -3,7 +3,6 @@ let bankAccDisplay = document.getElementById('bank-acc-table');
 //Functionality to pull bank accounts from database
 let bankAccRequestResponseHandler = function() {
   let responseObject = JSON.parse(this.responseText)
-  console.log(responseObject)
   for (let bankacc of responseObject){
     let tablerow = document.createElement('tr')
     //Append Bank Name

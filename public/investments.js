@@ -3,7 +3,6 @@ let investmentDisplay = document.getElementById('investment-table');
 //Functionality to pull bank accounts from database
 let investmentRequestResponseHandler = function() {
   let responseObject = JSON.parse(this.responseText)
-  console.log(responseObject)
   for (let investment of responseObject){
     let tablerow = document.createElement('tr')
     //Append Investment Name

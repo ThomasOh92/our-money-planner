@@ -9,30 +9,29 @@ module.exports = (db) => {
     }
   }
 
-  let addStickyNote = async (req, res) => {
+  let saveStickyNotes = async (req, res) =>{
+    console.log(req.body)
     try {
-        let result = await db.stickynotes.addStickyNote(req.cookies.currentpartner, req.body.content, req.body.xcoord, req.body.ycoord, req.cookies.account_id)
-        console.log("query result", result)
-        res.redirect('/')
+        let deleteInfo = await db.stickynotes.deleteStickyNotes(req.cookies.account_id)
+
+        console.log(deleteInfo)
+
+        for (let el of req.body){
+            let insertInfo = await db.stickynotes.insertStickyNotes(el.username, el.content, el.xcoord, el.ycoord, req.cookies.account_id)
+            console.log(insertInfo)
+        }
+
+        res.send("done")
+
     }catch (err){
         console.log(err)
     }
   }
 
-  let deleteStickyNote = async (req, res) => {
-    try{
-        let result = await db.stickynotes.deleteStickyNote(req.body.stickynoteid)
-        console.log("query result", result)
-        res.send(result)
-    }catch (err){
-        console.log(err)
-    }
-  }
 
   return {
     getStickyNotes,
-    addStickyNote,
-    deleteStickyNote
+    saveStickyNotes
   };
 
 }

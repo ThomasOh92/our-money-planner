@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS stickynotes  (
 	id SERIAL PRIMARY KEY,
 	username TEXT,
 	content TEXT,
-	xCoord INTEGER,
-	yCoord INTEGER,
+	xCoord NUMERIC,
+	yCoord NUMERIC,
 	account_id INTEGER
 );

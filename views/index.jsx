@@ -262,20 +262,9 @@ class Home extends React.Component {
                 {/* Sticky Notes */}
                 <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                   <div id="board">
-                    <div>
-                        <div className="note draggable" id="note-1">
-                          <div className="note-header" id="note-1-header">
-                          </div>
-                          <div className="text">
-                              <textarea className="cnt" placeholder="Enter note description here"></textarea>
-                              <br />
-                              <label class="current-partner-label">{currentPartner}</label>
-                          </div>
-                        </div>
-                    </div>
                   </div>
                     <button type="button" className="btn btn-outline-secondary" id="add-new-note">Add New Note</button>
-                    <button type="button" className="btn btn-outline-secondary" id="test-button">Test</button>
+                    <button type="button" className="btn btn-outline-secondary" id="save-button">Save</button>
                 </div>
                 {/* Retrieve Info */}
                 <div className="tab-pane fade" id="v-pills-s" role="tabpanel" aria-labelledby="v-pills-s-tab">...</div>

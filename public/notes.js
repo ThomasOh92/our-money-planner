@@ -1,13 +1,37 @@
 let newNoteButton = document.getElementById('add-new-note')
 let noteBoard = document.getElementById('board')
-let stickynotecounter = 1;
+let stickynotecounter = 0;
 
+//Getting sticky note data from database
+let stickyNotesRequestResponseHandler = function() {
+  let responseObject = JSON.parse(this.responseText)
+  console.log("stickynotesfromdatabase:", responseObject)
+  for (let el of responseObject){
+    stickynotecounter++;
+    let newNote = document.createElement('div');
+    newNote.innerHTML = `
+                    <div class="note draggable" id="note-${stickynotecounter}">
+                      <div class="note-header" id="note-${stickynotecounter}-header"></div>
+                      <div class="text">
+                          <textarea class="cnt" placeholder="Enter note description here">${el.content}</textarea>
+                                                <br />
+                          <label class="current-partner-label">${el.username}</label>
+                      </div>
+                    </div>`
+    newNote.children[0].style.position = "absolute";
+    newNote.children[0].style.left = el.xcoord+'px';
+    newNote.children[0].style.top = el.ycoord+'px';
+    noteBoard.appendChild(newNote)
+    dragElement(document.getElementById(`note-${stickynotecounter}`));
+  }
+};
+let stickyNotesRequest = new XMLHttpRequest();
+stickyNotesRequest.addEventListener("load", stickyNotesRequestResponseHandler);
+stickyNotesRequest.open("GET", "/stickynote");
+stickyNotesRequest.send();
 
 
 // Make the DIV element draggable:
-dragElement(document.getElementById("note-1"));
-
-
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "-header")) {
@@ -49,6 +73,7 @@ function dragElement(elmnt) {
   }
 }
 
+//Adding a single note on the front-end
 let addNote = function(){
     stickynotecounter++;
     let newNote = document.createElement('div');
@@ -66,23 +91,32 @@ let addNote = function(){
     noteBoard.appendChild(newNote)
     dragElement(document.getElementById(`note-${stickynotecounter}`));
 }
-
-function readStickyNoteData() {
-    let numberOfStickyNotes = noteBoard.children.length;
-    for (let i=0; i < numberOfStickyNotes; i++){
-        console.log(noteBoard.children[i].children[0])
-        //x and y coords
-        console.log(noteBoard.children[i].getBoundingClientRect())
-        //content
-        console.log("content", noteBoard.children[i].children[0].children[1].children[0].value)
-        //username
-        console.log("username", noteBoard.children[i].children[0].children[1].children[2].innerText)
-    }
-}
-
-
 newNoteButton.addEventListener('click', addNote)
 
+//Saving all sticky note data to databse
+let stickyNoteTransferData = []
+let saveStickyNoteData = async () => {
+    //Reading all the necessary information about sticky notes
+    let numberOfStickyNotes = noteBoard.children.length;
+    for (let i=0; i < numberOfStickyNotes; i++){
+        let stickyNote = {}
+        stickyNote.xcoord = await noteBoard.children[i].children[0].offsetLeft;
+        stickyNote.ycoord =  await noteBoard.children[i].children[0].offsetTop;
+        stickyNote.content = noteBoard.children[i].children[0].children[1].children[0].value;
+        stickyNote.username = noteBoard.children[i].children[0].children[1].children[2].innerText
+        stickyNoteTransferData.push(stickyNote)
+    }
 
-let testButton = document.getElementById('test-button')
-testButton.addEventListener('click', readStickyNoteData)
+    //AJAX request out
+    let stickyNoteSaveRequest = new XMLHttpRequest();
+
+    stickyNoteSaveRequest.addEventListener("load", function(){
+      document.location="/"
+    });
+
+    stickyNoteSaveRequest.open("POST", '/stickynote');
+    stickyNoteSaveRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    stickyNoteSaveRequest.send(JSON.stringify(stickyNoteTransferData))
+}
+let saveButton = document.getElementById('save-button')
+saveButton.addEventListener('click', saveStickyNoteData)

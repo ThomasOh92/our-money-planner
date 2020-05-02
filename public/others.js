@@ -3,7 +3,6 @@ let othersDisplay = document.getElementById('other-table');
 //Functionality to pull bank accounts from database
 let otherRequestResponseHandler = function() {
   let responseObject = JSON.parse(this.responseText)
-  console.log("responseObject", responseObject)
   for (let other of responseObject){
     let tablerow = document.createElement('tr')
     //Append other Name
