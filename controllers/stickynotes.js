@@ -17,7 +17,7 @@ module.exports = (db) => {
         console.log(deleteInfo)
 
         for (let el of req.body){
-            let insertInfo = await db.stickynotes.insertStickyNotes(el.username, el.content, el.xcoord, el.ycoord, req.cookies.account_id)
+            let insertInfo = await db.stickynotes.insertStickyNotes(el.username, el.content, el.xcoord, el.ycoord, req.cookies.account_id, el.height, el.width)
             console.log(insertInfo)
         }
 

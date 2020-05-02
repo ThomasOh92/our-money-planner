@@ -49,5 +49,7 @@ CREATE TABLE IF NOT EXISTS stickynotes  (
 	content TEXT,
 	xCoord NUMERIC,
 	yCoord NUMERIC,
-	account_id INTEGER
+	account_id INTEGER,
+	height TEXT,
+	width TEXT
 );

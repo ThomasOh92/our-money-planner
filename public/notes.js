@@ -21,6 +21,8 @@ let stickyNotesRequestResponseHandler = function() {
     newNote.children[0].style.position = "absolute";
     newNote.children[0].style.left = el.xcoord+'px';
     newNote.children[0].style.top = el.ycoord+'px';
+    newNote.children[0].children[1].children[0].style.height = el.height;
+    newNote.children[0].children[1].children[0].style.width = el.width;
     noteBoard.appendChild(newNote)
     dragElement(document.getElementById(`note-${stickynotecounter}`));
   }
@@ -102,6 +104,10 @@ let saveStickyNoteData = async () => {
         let stickyNote = {}
         stickyNote.xcoord = await noteBoard.children[i].children[0].offsetLeft;
         stickyNote.ycoord =  await noteBoard.children[i].children[0].offsetTop;
+
+        stickyNote.width = noteBoard.children[i].children[0].children[1].children[0].style.width;
+        stickyNote.height = noteBoard.children[i].children[0].children[1].children[0].style.height;
+
         stickyNote.content = noteBoard.children[i].children[0].children[1].children[0].value;
         stickyNote.username = noteBoard.children[i].children[0].children[1].children[2].innerText
         stickyNoteTransferData.push(stickyNote)
@@ -111,7 +117,7 @@ let saveStickyNoteData = async () => {
     let stickyNoteSaveRequest = new XMLHttpRequest();
 
     stickyNoteSaveRequest.addEventListener("load", function(){
-      document.location="/"
+      alert('saved!')
     });
 
     stickyNoteSaveRequest.open("POST", '/stickynote');
