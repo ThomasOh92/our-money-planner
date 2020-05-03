@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users  (
 CREATE TABLE IF NOT EXISTS bankaccounts  (
 	id SERIAL PRIMARY KEY,
 	accountdescription TEXT,
-	amount INTEGER,
+	amount NUMERIC,
 	account_id INTEGER,
 	bank TEXT
 );
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS bankaccounts  (
 CREATE TABLE IF NOT EXISTS investments  (
 	id SERIAL PRIMARY KEY,
 	name TEXT,
-	value TEXT,
+	value NUMERIC,
 	description TEXT,
 	account_id INTEGER
 );

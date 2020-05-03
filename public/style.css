@@ -57,13 +57,63 @@
 	position: absolute;
 	font-family: "Gloria Hallelujah", cursive;
 	bottom: 5px;
-	color: blue;
+	color: #076c34;
 }
 
 .note-header {
 	height: 40px;
 	min-width: 300px;
 	background-color: #FFFFCC;
+}
+
+.note-delete-buttons{
+	position: absolute;
+	right: 5px;
+}
+
+.pre-app-body{
+	background-color: white;
+	font-family: 'Gloria Hallelujah', sans-serif;
+	color: #076c34;
+}
+
+.pre-app-box{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.my-form{
+	border-radius: 30px;
+  background-color: white;
+}
+
+.form-header{
+	text-align: center;
+	font-weight: 900;
+}
+
+.logo {
+	max-height: 70px;
+	width: auto;
+}
+
+.logo-text{
+	font-family:  "Gloria Hallelujah", cursive;
+	align-self: center;
+	font-size: 30px;
+	color: #076c34;
+}
+
+.logo-container{
+	justify-content: space-evenly;
+}
+
+.my-navbar, .my-sidebar{
+	font-family: "Gloria Hallelujah", cursive;
+}
+
+.my-navbar {
+	background-color: white;
 }
 
 #board-section{

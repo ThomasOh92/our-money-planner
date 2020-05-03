@@ -2,6 +2,12 @@ let newNoteButton = document.getElementById('add-new-note')
 let noteBoard = document.getElementById('board')
 let stickynotecounter = 0;
 
+//Deleting a single note on the front-end
+let deleteNote = function() {
+    let noteToDelete = this.parentNode.parentNode.parentNode;
+    noteToDelete.parentNode.removeChild(noteToDelete);
+}
+
 //Getting sticky note data from database
 let stickyNotesRequestResponseHandler = function() {
   let responseObject = JSON.parse(this.responseText)
@@ -11,7 +17,9 @@ let stickyNotesRequestResponseHandler = function() {
     let newNote = document.createElement('div');
     newNote.innerHTML = `
                     <div class="note draggable" id="note-${stickynotecounter}">
-                      <div class="note-header" id="note-${stickynotecounter}-header"></div>
+                      <div class="note-header" id="note-${stickynotecounter}-header">
+                            <span class="badge badge-pill badge-danger note-delete-buttons" id="note-${stickynotecounter}-delete">x</span>
+                      </div>
                       <div class="text">
                           <textarea class="cnt" placeholder="Enter note description here">${el.content}</textarea>
                                                 <br />
@@ -24,6 +32,7 @@ let stickyNotesRequestResponseHandler = function() {
     newNote.children[0].children[1].children[0].style.height = el.height;
     newNote.children[0].children[1].children[0].style.width = el.width;
     noteBoard.appendChild(newNote)
+    document.getElementById(`note-${stickynotecounter}-delete`).addEventListener('click', deleteNote)
     dragElement(document.getElementById(`note-${stickynotecounter}`));
   }
 };
@@ -75,6 +84,7 @@ function dragElement(elmnt) {
   }
 }
 
+
 //Adding a single note on the front-end
 let addNote = function(){
     stickynotecounter++;
@@ -83,7 +93,9 @@ let addNote = function(){
     let currentpartner = cookies.filter(cookie => cookie.startsWith(' currentpartner'))[0].substring(16)
     newNote.innerHTML = `
                     <div class="note draggable" id="note-${stickynotecounter}">
-                      <div class="note-header" id="note-${stickynotecounter}-header"></div>
+                      <div class="note-header" id="note-${stickynotecounter}-header">
+                        <span class="badge badge-pill badge-danger note-delete-buttons" id="note-${stickynotecounter}-delete">x</span>
+                      </div>
                       <div class="text">
                           <textarea class="cnt" placeholder="Enter note description here"></textarea>
                                                 <br />
@@ -91,6 +103,7 @@ let addNote = function(){
                       </div>
                     </div>`
     noteBoard.appendChild(newNote)
+    document.getElementById(`note-${stickynotecounter}-delete`).addEventListener('click', deleteNote)
     dragElement(document.getElementById(`note-${stickynotecounter}`));
 }
 newNoteButton.addEventListener('click', addNote)

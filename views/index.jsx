@@ -150,14 +150,24 @@ class Home extends React.Component {
         </head>
         <body>
             {/*The topline navigation bar*/}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top" style={{height: "100px"}}>
-              <a className="navbar-brand" href="#">Finance Collab</a>
+            <nav className="navbar navbar-expand-lg navbar-light sticky-top my-navbar" style={{height: "100px"}}>
+              {/*Logo Stuff*/}
+              <a className="navbar-brand" href="/">
+                <div class="row justify-content-center">
+                    <div className="col-sm-6 col-md-4 d-inline-flex logo-container">
+                   <img className="logo" src="/img/logo.png" alt="logo"/>
+                   <h5 className="logo-text ml-3">Our Money Planner</h5>
+                    </div>
+                </div>
+              </a>
+
+              {/*Nav Bar items*/}
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
-              {/*Nav Bar items*/}
+
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav mr-auto">
+                    <ul className="navbar-nav ml-auto mr-5">
                         {/*Display for current user*/}
                         <li className="nav-item">
                             <a className="nav-link disabled" href="#">Current User: {currentPartner}</a>
@@ -182,7 +192,7 @@ class Home extends React.Component {
               <div className="row">
               {/* The side navigation bar, to change boards */}
               <div className="col-sm-2">
-                 <div className="nav flex-sm-column nav-pills mt-4 greypills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                 <div className="nav flex-sm-column nav-pills mt-4 greypills my-sidebar" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                       <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Financial Overview</a>
                       <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Sticky Notes</a>
                       <a className="nav-link" id="v-pills-s-tab" data-toggle="pill" href="#v-pills-s" role="tab" aria-controls="v-pills-s" aria-selected="false">Retrieve Info</a>
@@ -209,7 +219,8 @@ class Home extends React.Component {
                         </form>
                         <button id="updatenetworthbutton" className="btn btn-primary mb-2 mt-4">Update</button>
                     </div>
-                    <hr />
+                    <br />
+                    <br />
                     {/* Current Income Section */}
                     <div id="income-section">
                       <div className="form-group">
@@ -234,7 +245,8 @@ class Home extends React.Component {
                             </div>
                       </div>
                     </div>
-                    <hr />
+                    <br />
+                    <br />
                     {/* Bank Account and Debts/Bills Section */}
                     <div className = "container-fluid pl-0">
                         <div className="row">
