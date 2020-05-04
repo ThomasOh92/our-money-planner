@@ -195,7 +195,7 @@ class Home extends React.Component {
                  <div className="nav flex-sm-column nav-pills mt-4 greypills my-sidebar" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                       <a className="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Financial Overview</a>
                       <a className="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Sticky Notes</a>
-                      <a className="nav-link" id="v-pills-s-tab" data-toggle="pill" href="#v-pills-s" role="tab" aria-controls="v-pills-s" aria-selected="false">Retrieve Info</a>
+                      <a className="nav-link" id="v-pills-s-tab" data-toggle="pill" href="#v-pills-s" role="tab" aria-controls="v-pills-s" aria-selected="false">Upload Documents</a>
                       <a className="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Suggested Financial Products</a>
                 </div>
               </div>
