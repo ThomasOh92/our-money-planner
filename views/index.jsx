@@ -281,7 +281,6 @@ class Home extends React.Component {
                 {/* Retrieve Info */}
                 <div className="tab-pane fade" id="v-pills-s" role="tabpanel" aria-labelledby="v-pills-s-tab">
                     <form method="POST" action="/upload" enctype="multipart/form-data" id="upload-form">
-
                     </form>
                         <button type="button" className="btn btn-outline-secondary" id="authorize-access">Authorize</button>
                 </div>

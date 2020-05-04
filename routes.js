@@ -1,3 +1,6 @@
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
+
 module.exports = (app, allModels) => {
 
 
@@ -65,5 +68,5 @@ module.exports = (app, allModels) => {
 
   //Upload to your google drive
   const uploadController = require('./controllers/upload')(allModels)
-  app.post('/upload', uploadController.uploadFile)
+  app.post('/upload', upload.single('file'), uploadController.uploadFile)
 };

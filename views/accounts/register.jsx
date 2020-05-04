@@ -31,7 +31,7 @@ class Registration extends React.Component {
                         <input type="text" className="form-control" id="password" name="password" placeholder="Password"></input>
                       </div>
                       <div className="form-group">
-                        <input type="text" className="form-control" id="confirmpassword" placeholder="Confirm Password"></input>
+                        <input type="password" className="form-control" id="confirmpassword" placeholder="Confirm Password"></input>
                       </div>
                         <button type="submit" value="Submit" className="btn btn-primary mt-3">Register</button>
                     </form>

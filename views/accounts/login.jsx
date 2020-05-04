@@ -28,7 +28,7 @@ class LogIn extends React.Component {
                         <input type="text" className="form-control" id="accountname" name="accountname" placeholder="Account Name"></input>
                       </div>
                       <div className="form-group">
-                        <input type="text" className="form-control" id="password" name="password" placeholder="Password"></input>
+                        <input type="password" className="form-control" id="password" name="password" placeholder="Password"></input>
                       </div>
                         <button type="submit" value="Submit" className="btn btn-primary">Log In</button>
                     </form>

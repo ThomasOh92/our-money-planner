@@ -13,15 +13,18 @@ fragmentString = location.hash.substring(1);
 
 if (fragmentString){
     let paramArray = fragmentString.split("&")
-    let accessToken = paramArray[1].split("=")[1]
-    console.log(accessToken)
+    let accessToken = paramArray[1].split("=")[1];
+    let tokenExpiry = paramArray[3].split("=")[1];
+    let scope = paramArray[4].split("=")[1]
+    document.cookie = "accesstoken="+accessToken;
+    document.cookie = "tokenexpiry="+tokenExpiry
+    document.cookie = "scope="+scope
 
     document.getElementById('upload-form').innerHTML =
         `<div class="form-group" >
-            <input id="files" type="file" className="form-control-file" name="files[]" multiple/>
-            <input type="hidden" name="access_token" value="${accessToken}"/>
-            <button type="submit" className="btn btn-outline-secondary" id="upload">Upload</button>
-         </div>`
+            <input id="files" type="file" className="form-control-file" name="file" multiple/>
+         </div>
+         <button type="submit" className="btn btn-outline-secondary" id="upload">Upload</button>`
 }
 
 /*
