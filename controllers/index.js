@@ -8,6 +8,7 @@ module.exports = (db) => {
 
   let mainPage = (req, res) => {
     if (req.cookies.loggedin){
+        console.log(req.query.code)
         const data = {partnerA: req.cookies.partnerA,
                       partnerB: req.cookies.partnerB,
                       currentPartner: req.cookies.currentpartner}

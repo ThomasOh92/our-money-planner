@@ -11,7 +11,6 @@ let deleteNote = function() {
 //Getting sticky note data from database
 let stickyNotesRequestResponseHandler = function() {
   let responseObject = JSON.parse(this.responseText)
-  console.log("stickynotesfromdatabase:", responseObject)
   for (let el of responseObject){
     stickynotecounter++;
     let newNote = document.createElement('div');

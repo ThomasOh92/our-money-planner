@@ -279,7 +279,10 @@ class Home extends React.Component {
                     <button type="button" className="btn btn-outline-secondary" id="save-button">Save</button>
                 </div>
                 {/* Retrieve Info */}
-                <div className="tab-pane fade" id="v-pills-s" role="tabpanel" aria-labelledby="v-pills-s-tab">...</div>
+                <div className="tab-pane fade" id="v-pills-s" role="tabpanel" aria-labelledby="v-pills-s-tab">
+                        <input id="files" type="file" name="files[]" multiple/>
+                        <button type="button" className="btn btn-outline-secondary" id="authorize-access">Authorize</button>
+                </div>
                 {/* Suggested Financial Products */}
                 <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
                 </div>
@@ -302,7 +305,8 @@ class Home extends React.Component {
     <script src="/outgoings.js"></script>
     <script src="/others.js"></script>
     <script src="/notes.js"></script>
-      </html>
+    <script src="/upload.js"></script>
+     </html>
     );
   }
 }
