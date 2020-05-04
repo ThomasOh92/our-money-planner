@@ -35,6 +35,9 @@ class Registration extends React.Component {
                       </div>
                         <button type="submit" value="Submit" className="btn btn-primary mt-3">Register</button>
                     </form>
+                        <div style={{textAlign: "right"}}>
+                            <a href="/login" class="stretched-link">Log In</a>
+                        </div>
                     <br />
                 </div>
             </div>
