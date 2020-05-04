@@ -2,11 +2,11 @@ let clientId = "342151651924-frn3q0a6s2u5kp9h6v3tcb016mprseno.apps.googleusercon
 
 let clientSecret = "3JMMwGLOQ9yKIcyWXJXUDd5T";
 
-let redirect_uri = "https://boiling-beach-26217.herokuapp.com";
+let redirect_uri = "http://boiling-beach-26217.herokuapp.com";
 
 let scope = "https://www.googleapis.com/auth/drive";
 
-let url = "https://boiling-beach-26217.herokuapp.com"
+let url = "http://boiling-beach-26217.herokuapp.com"
 
 let fragmentString = null;
 fragmentString = location.hash.substring(1);
