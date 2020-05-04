@@ -33,7 +33,7 @@ class LogIn extends React.Component {
                         <button type="submit" value="Submit" className="btn btn-primary">Log In</button>
                     </form>
                         <div style={{textAlign: "right"}}>
-                            <a href="/registration" class="stretched-link">Register</a>
+                            <a href="/registration">Register</a>
                         </div>
                   </div>
                 </div>
