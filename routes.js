@@ -62,4 +62,8 @@ module.exports = (app, allModels) => {
   const stickyNoteController = require('./controllers/stickynotes')(allModels)
   app.get('/stickynote', stickyNoteController.getStickyNotes)
   app.post('/stickynote', stickyNoteController.saveStickyNotes)
+
+  //Upload to your google drive
+  const uploadController = require('./controllers/upload')(allModels)
+  app.post('/upload', uploadController.uploadFile)
 };
